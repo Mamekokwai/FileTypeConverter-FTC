@@ -66,7 +66,7 @@ release文件夹有经过测试的版本可以直接使用.
 
 ### 1. [推荐] 选中并拖入单个或多个文件到release中的程序图标运行 (将自动导入文件路径)
 演示动画:
-<video controls src="https://github.com/Mamekokwai/FileTypeConverter-FTC/blob/main/Docs/Picture/%E6%8B%96%E5%85%A5%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8%E7%A4%BA%E8%8C%83.mp4" title="Title"></video>
+<video controls src="Docs\Picture\272da77e210c3bddba46b9c1212e28e6.gif" title="Title"></video>
 ### 2. 双击release中的 .exe 文件运行, 目前功能 [2. 输入文件路径](#输入文件路径) 只支持输出导入的文件路径,不能合并到处理队列, 所有暂时无法使用.
 
 ### 3. 直接参数传递
