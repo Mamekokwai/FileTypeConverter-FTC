@@ -68,6 +68,7 @@ release文件夹有经过测试的版本可以直接使用.
 演示动画:
 
 https://github.com/user-attachments/assets/88de89b5-fae9-481c-8de5-ff2ea324a564
+![272da77e210c3bddba46b9c1212e28e6](https://github.com/user-attachments/assets/c8bd6b57-7e35-4efa-a3f2-bd72f524ca42)
 
 ### 2. 双击release中的 .exe 文件运行, 目前功能 [2. 输入文件路径](#输入文件路径) 只支持输出导入的文件路径,不能合并到处理队列, 所有暂时无法使用.
 
