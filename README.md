@@ -90,7 +90,7 @@ main.exe "file1.png" "file2.jpg" "file3.gif"
 3. 显示当前路径列表
 0. 退出
 ```
-![内部导入文件演示1 1](https://github.com/user-attachments/assets/1a4f7bbb-a53a-4a51-9ff1-b9cb3c5abc11)
+![内部导入文件演示1 1](https://github.com/user-attachments/assets/ec8c4a7f-df42-4f6e-ad03-996100df6ebd)
 
 ## 📁 项目结构
 
