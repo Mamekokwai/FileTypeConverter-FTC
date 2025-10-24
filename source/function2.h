@@ -7,5 +7,8 @@
 #include <string>
 #include <istream>
 
-void function2();
-int split_path_from_user();
+int split_path_from_user(char ***paths);
+int function2();
+
+// extern char **g_paths;
+// extern int g_path_count;

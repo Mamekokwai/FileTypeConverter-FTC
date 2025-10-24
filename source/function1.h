@@ -5,6 +5,6 @@
 #include <string.h>
 #include <windows.h>
 
-void function1(int argc, char *argv[]);
+int function1(int argc, char *argv[]);
 
 int file_type_change(int argc, char *argv[], char *newtype);

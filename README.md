@@ -1,218 +1,255 @@
-# FTC
-
-## 批量文件格式转换工具
+# FTC - 批量文件格式转换工具
 
 一个基于 C/C++ 语言和 FFmpeg 的多功能文件格式转换工具，支持批量处理和交互式操作。
 
-## 项目简介
+## 🚀 项目简介
 
-该项目由本人学习 C 语言和 FFmpeg 过程中所编写.
+该项目由本人在学习 C 语言和 FFmpeg 过程中独立开发完成。虽然只是一个简单的文件转换工具，但在路径处理、内存管理、用户交互等方面投入了大量精力，具有很好的扩展性和代码结构。
 
-第一次上传那么完整的github项目, 虽然只是很简单的调用程序, 但是在处理输入和输出方面花了很多心思, 虽然网络上肯定有类似的开源项目, 但是本项目为本人独自完成, 没有参考和借鉴, 受益匪浅, 希望得到大家的支持和鼓励.
+**特点**：
+- ✅ 完全独立开发，无参考借鉴
+- ✅ 代码结构清晰，易于扩展新功能
+- ✅ 完善的错误处理和内存管理
+- ✅ 支持中文字符和 UTF-8 编码
 
-改项目的扩展性极强, 可以随意添加其他各种功能, 并且现有的每种功能都单独封装了程序.
-release文件夹有经过测试的版本可以直接使用.
+## ✨ 功能特性
 
+- 🎯 **批量文件格式转换** - 支持多种图片/视频/音频格式转换
+- 📁 **智能路径处理** - 自动解析文件路径、父目录、文件名和扩展名
+- 🔄 **交互式操作** - 友好的命令行菜单界面
+- 🎨 **全局路径管理** - 支持路径的合并、显示和统一管理
+- ⚡ **高效处理** - 支持多文件批量转换
+- 🔧 **模块化设计** - 每个功能独立封装，易于维护和扩展
 
-## 功能特性
+## 📋 当前功能状态
 
-- 🎯 **批量文件格式转换** - 支持多种图片/视频格式转换
-- 📁 **智能路径处理** - 自动解析文件路径和扩展名
-- 🔄 **交互式操作** - 提供友好的命令行界面
-- 🎨 **编码支持** - 完善的 UTF-8 编码处理
-- ⚡ **高效处理** - 支持多文件并行处理
+### ✅ 已实现功能
+1. **文件格式转换** - 完整的格式转换流程
+2. **交互式路径输入** - 支持拖拽文件获取路径
+3. **全局路径管理** - 统一的路径存储和管理
+4. **路径列表显示** - 实时查看当前处理的文件
 
+### 🚧 开发中功能
+- [ ] 完善的路径识别功能(目前只能识别带双引号的路径)
+- [ ] 路径清除功能
+- [ ] 输出系统编码方式(控制台编码方式,程序自身编码方式, 文件系统编码方式)
+- [ ] 包含 FFmpeg 静态库的独立版本
+- [ ] 更完善的错误处理
+- [ ] 更详细的参数设置
+- [ ] 日志系统
+- [ ] 图形界面
+- [ ] 用户输入文件数量提升(char input[2048];)
+- [ ] 中文路径闪退
 
-## 📁 功能1支持的格式分类
+## 🛠️ 支持的格式
 
-### 1. **图片格式** ✅
+### 图片格式 ✅
 ```bash
-# 常见图片格式
 .png, .jpg, .jpeg, .bmp, .gif, .tiff, .tif
 .webp, .ico, .svg, .psd, .raw, .cr2, .nef
-
-# 专业图片格式
 .pgm, .ppm, .pbm, .pnm, .dpx, .exr, .hdr
 ```
 
-### 2. **视频格式** ✅
+### 视频格式 ✅
 ```bash
-# 常见视频格式
 .mp4, .avi, .mkv, .mov, .wmv, .flv, .webm
 .m4v, .3gp, .ogv, .ts, .mts, .m2ts
-
-# 专业视频格式
 .mxf, .vob, .asf, .rm, .rmvb, .divx
 ```
 
-### 3. **音频格式** ✅
+### 音频格式 ✅
 ```bash
-# 常见音频格式
 .mp3, .wav, .aac, .flac, .ogg, .m4a, .wma
 .opus, .ac3, .aiff, .ape, .tta
 ```
 
-### 4. **特殊格式** ⚠️
-```bash
-# 需要额外编解码器
-.heic, .heif, .avif    # 现代图片格式
-.vp9, .av1, .h265      # 现代视频编码
-```
+## 🎯 使用方法
 
-## 使用方法
+### 前提条件
+- **FFmpeg**: 需要安装 FFmpeg 并添加到系统 PATH 环境变量
+- **编译器**: GCC (MinGW-w64 或 MSYS2)
 
-**提示**: 使用前请确保 FFmpeg 已正确安装并配置到系统 PATH 环境变量中.
-**FFmpeg 安装说明**: 具体的 FFmpeg 安装步骤请善用ai和搜索.
+### 使用方式
 
-### 1. [推荐] 选中并拖入单个或多个文件到release中的程序图标运行 (将自动导入文件路径)
-演示动画:
+#### 方式1: 拖拽文件使用 (推荐)
+直接将文件拖拽到程序图标上运行，自动导入文件路径。
 
-https://github.com/user-attachments/assets/88de89b5-fae9-481c-8de5-ff2ea324a564
-![272da77e210c3bddba46b9c1212e28e6](https://github.com/user-attachments/assets/c8bd6b57-7e35-4efa-a3f2-bd72f524ca42)
+![拖拽使用演示](Docs/Picture/拖拽使用示范.gif)
 
-### 2. 双击release中的 .exe 文件运行, 目前功能 [2. 输入文件路径](#输入文件路径) 只支持输出导入的文件路径,不能合并到处理队列, 所有暂时无法使用.
-
-### 3. 直接参数传递
+#### 方式2: 命令行参数
 ```bash
 main.exe "file1.png" "file2.jpg" "file3.gif"
 ```
 
+#### 方式3: 交互式菜单
+运行程序后选择功能：
+```
+1. 文件格式转换 (当前有 X 个文件)
+2. 输入文件路径
+3. 显示当前路径列表
+0. 退出
+```
 
-## 开发计划
-<span id="输入文件路径"></span>
-- [ ] 完善功能 2. 输入文件路径 ,使路径合并到处理队列
-- [ ] 清除现有路径, 避免重新打开程序
-- [ ] 封装包含ffmpeg静态库的版本, 供电脑没有ffmpeg的用户使用
-- [ ] 开发可视化界面
-- [ ] 配置文件支持
-- [ ] 日志记录系统
-- [ ] CHANGELOG 和 CONTRIBUTION 文档都还是空壳子,后面再补充
-
-## 项目结构
+## 📁 项目结构
 
 ```
-project/
-├── source/           # 源代码目录
-│   ├── main.cpp         # 主程序入口
-│   ├── main.h           # 主头文件
-│   ├── function1.cpp    # 文件格式转换功能
-│   ├── function1.h      # 功能1头文件
-│   ├── function2.cpp    # 交互式路径输入功能
-│   ├── function2.h      # 功能2头文件
-│   ├── file_path_processing.cpp  # 文件路径处理
+FTC/
+├── source/                 # 源代码目录
+│   ├── main.cpp              # 主程序入口 & 全局路径管理
+│   ├── main.h                # 主头文件 & 全局变量声明
+│   ├── function1.cpp         # 文件格式转换功能
+│   ├── function1.h           # 功能1头文件
+│   ├── function2.cpp         # 交互式路径输入功能
+│   ├── function2.h           # 功能2头文件
+│   ├── file_path_processing.cpp  # 文件路径处理核心功能
 │   ├── file_path_processing.h    # 路径处理头文件
-│   ├── ffmpeg_using.cpp # FFmpeg 封装
-│   ├── ffmpeg_using.h   # FFmpeg 头文件
-│   ├── animation.cpp    # 控制台动画效果
-│   └── animation.h      # 动画头文件
-├── output/              # 编译输出目录
-│   ├── debug/          # 调试版本
-│   └── release/        # 发布版本
-└── .vscode/            # VSCode 配置
-    ├── launch.json     # 调试配置
-    └── tasks.json      # 构建任务
+│   ├── ffmpeg_using.cpp     # FFmpeg 功能封装
+│   ├── ffmpeg_using.h       # FFmpeg 头文件
+│   ├── init.cpp             # 程序初始化
+│   ├── init.h               # 初始化头文件
+│   ├── animation.cpp        # 控制台动画效果
+│   └── animation.h          # 动画头文件
+├── output/                  # 编译输出目录
+│   ├── debug/               # 调试版本
+│   └── release/             # 发布版本
+├── release/                 # 发布文件目录
+│   └── main.exe             # 测试过的可执行文件
+├── .vscode/                 # VSCode 配置
+│   ├── launch.json          # 调试配置
+│   └── tasks.json           # 构建任务
+└── Docs/                    # 文档资源
+    └── Picture/             # 图片资源
 ```
-## 配置说明
 
-### VSCode 调试配置
-项目包含完整的 VSCode 调试配置：
-- **调试配置**: `.vscode/launch.json`
-- **构建任务**: `.vscode/tasks.json`
-- **支持调试和发布两种模式**
+## 🔧 编译说明
 
-需要安装好 VSCode 插件:
-- **C/C++**
+### 使用 VSCode 编译 (推荐)
 
-### 路径配置
-[需要手动填写] 请确保以下路径配置正确：
-1. **FFmpeg 路径**: 系统 PATH 中需包含 ffmpeg.exe
-2. **GDB 路径**: `launch.json` 中的 `miDebuggerPath`
-3. **测试文件路径**: `launch.json` 中的示例文件路径
-<span id="JSON文件配置"></span>
-4. **JSON文件配置**: 
-`tasks.json` 中的gcc路径需要替换为你自己的gcc路径，如:"command": "C:/msys64/ucrt64/bin/gcc.exe", 
-检查 `launch.json` 中的 `miDebuggerPath` 是否正确,如:"miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+1. **安装 VSCode** 和 **C/C++ 插件**
+2. **打开项目文件夹**
+3. **配置编译路径**：
+   - 修改 `tasks.json` 中的 GCC 路径
+   - 修改 `launch.json` 中的 GDB 路径
+4. **开始调试**：选择菜单栏「调试」→「开始调试」
 
+![VSCode配置](Docs/Picture/配置项目.png)
 
-## 编译说明
+### 手动编译命令
 
-### 推荐使用VSCode编译此项目
-- **安装VSCode**: 下载并安装 VSCode 最新版本
-- **安装插件**: 安装 C/C++ 插件
-- **配置项目**: 打开项目文件夹，在VSCode中打开项目，选择菜单栏中的「调试」->「开始调试」，即可编译运行项目![alt text](Docs/Picture/配置项目.png)
-如果运行错误，请检查 [JSON文件配置](#JSON文件配置) 是否正确。
-
-### 依赖要求
-- **编译器**: GCC (MinGW-w64 或 MSYS2)
-- **FFmpeg**: 需要安装 FFmpeg 并添加到系统 PATH
-- **系统**: Windows 7+
-
-### 编译命令
-
-- **注意cmd运行路径**: 需要跳转到保存本项目的根目录下, 请在cmd使用cd命令,具体请询问ai
-
-**调试版本:**
+**调试版本**：
 ```bash
-gcc -g -o ./output/debug/main.exe ./source/file_path_processing.cpp ./source/ffmpeg_using.cpp ./source/function1.cpp ./source/main.cpp ./source/animation.cpp ./source/function2.cpp
+gcc -g -o ./output/debug/main.exe ./source/*.cpp
 ```
 
-**发布版本:**
+**发布版本**：
 ```bash
-gcc -O2 -s -o ./release/main.exe ./source/file_path_processing.cpp ./source/ffmpeg_using.cpp ./source/function1.cpp ./source/main.cpp ./source/animation.cpp ./source/function2.cpp
+gcc -O2 -s -o ./release/main.exe ./source/*.cpp
 ```
 
-## API 文档
+## 📚 核心 API
 
-### 核心函数
-
-#### 文件路径处理
+### 全局路径管理 (`main.cpp`)
 ```c
-void get_multiple_file_info(int argc, char *argv[], FileInfo *file_info);
-void combine_paths_count(FileInfo *file_info, char **output_path_ptr, const char *user_ext, int file_count);
-char *LocalToUTF8(const char *local_str);
-int split_path_from_user();              // 路径分割处理
+extern char **g_global_paths;     // 全局路径数组
+extern int g_global_path_count;   // 全局路径数量
+
+int merge_paths_to_global(char **new_paths, int new_count);  // 合并路径到全局
+void print_global_paths();        // 显示路径列表
 ```
 
-#### 格式转换
+### 文件路径处理 (`file_path_processing.cpp`)
 ```c
-int ffmpeg_convert(const char *input, const char *output);
-int file_type_change(int argc, char *argv[], char *newtype);
-```
-
-#### 用户交互
-```c
-void function1(int argc, char *argv[]);  // 格式转换功能
-void function2();                        // 交互式路径输入
-```
-
-## 数据结构
-
-### FileInfo 结构体
-```c
+// 文件信息结构
 typedef struct {
-    char *file_path;            // 完整文件路径
-    char *parent_path;          // 父目录路径
-    char *filename_without_ext; // 无扩展名文件名
-    char *ext;                  // 文件扩展名
+    char *file_path;              // 完整路径
+    char *parent_path;            // 父目录
+    char *filename_without_ext;   // 无扩展名文件名
+    char *ext;                    // 文件扩展名
 } FileInfo;
+
+void get_multiple_file_info(int argc, char *argv[], FileInfo *file_info);
+void combine_paths_count(FileInfo *file_info, char **output_path, const char *ext, int count);
+int split_paths(const char *input, char ***paths);  // 路径分割
+void free_paths(char **paths, int count);           // 内存释放
 ```
 
-## 注意事项
+### 格式转换 (`function1.cpp`)
+```c
+int function1(int argc, char *argv[]);              // 格式转换主功能
+int file_type_change(int argc, char *argv[], char *newtype);  // 类型转换
+```
 
-1. **内存管理**: 所有动态分配的内存都已妥善处理
-2. **编码支持**: 自动处理本地编码到 UTF-8 的转换
-3. **错误处理**: 包含完善的错误检查和用户提示
-4. **缓冲区安全**: 使用安全的字符串函数防止溢出
+### 交互式输入 (`function2.cpp`)
+```c
+int function2();                                    // 交互式路径输入
+int split_path_from_user(char ***paths);            // 用户输入处理
+```
 
-## 许可证
+### FFmpeg 封装 (`ffmpeg_using.cpp`)
+```c
+int ffmpeg_convert(const char *input, const char *output);  // 格式转换
+```
 
-本项目采用 [许可证名称] - 详见 [LICENSE](LICENSE) 文件
+## 🎮 使用示例
 
-## 联系方式
+### 基本使用流程
+1. **启动程序**：双击 `main.exe` 或通过命令行启动
+2. **添加文件**：
+   - 方式1：启动时通过命令行参数添加
+   - 方式2：在菜单中选择功能2，拖拽文件添加
+3. **格式转换**：选择功能1，输入目标格式（如 `png`）
+4. **查看结果**：转换完成后在原始文件同目录查看新文件
 
-nywerya - nywerya@gmail.com - https://github.com/Mamekokwai
+### 交互示例
+```
+当前工作目录: C:\Projects\FTC
+
+1. 文件格式转换 (当前有 3 个文件)
+2. 输入文件路径  
+3. 显示当前路径列表
+0. 退出
+▶ 2
+
+▲▼▲请拖入文件,支持多个▲▼▲
+▶ [拖拽文件到这里]
+
+▲Found 2 paths:
+  0: C:\Users\test\image1.jpg
+  1: C:\Users\test\image2.png
+
+按回车键继续...
+✅ FUNCTION2 DONE
+
+▲ 合并成功，总路径数: 5
+```
+
+## ⚠️ 注意事项
+
+1. **FFmpeg 依赖**：必须安装 FFmpeg 并配置系统 PATH
+2. **路径格式**：支持带空格的路径，自动处理引号
+3. **内存安全**：所有动态内存都妥善管理，避免泄漏
+4. **编码支持**：自动处理本地编码到 UTF-8 的转换
+5. **错误处理**：完善的错误检查和用户提示
+
+## 🔮 未来计划
+
+- [ ] **路径管理增强** - 添加路径删除、清空功能
+- [ ] **独立版本** - 封装包含 FFmpeg 静态库的版本
+- [ ] **图形界面** - 开发可视化操作界面
+- [ ] **配置系统** - 支持配置文件保存设置
+- [ ] **日志系统** - 详细的运行日志记录
+- [ ] **更多格式** - 支持更多专业格式转换
+
+## 📄 许可证
+
+本项目采用 MIT 许可证 - 详见 [LICENSE](LICENSE) 文件
+
+## 📞 联系方式
+
+- **作者**: nywerya
+- **邮箱**: nywerya@gmail.com  
+- **GitHub**: [https://github.com/Mamekokwai](https://github.com/Mamekokwai)
 
 ---
 
-
-
+**温馨提示**: 项目处于活跃开发阶段，API 和功能可能会有调整。欢迎反馈问题和建议！

@@ -1,25 +1,43 @@
 #include "function2.h"
+#include "main.h"
 
-void function2()
+int function2()
 {
-    int result = split_path_from_user();
-    if (result != 0)
+    printf("▲▼▲FUNCTION2 START▲▼▲\n");
+
+    char **new_paths = NULL;
+    int new_count = 0;
+
+    // 获取用户输入的路径
+    if ((new_count = split_path_from_user(&new_paths)) <= 0)
     {
-        // 处理错误情况
-        printf("❌ FUNCTION1 ERROR\n");
+        printf("❌ FUNCTION split_path_from_user() error!\n");
+        return -1;
     }
-    printf("✅ FUNCTION2 DONE\n");
+
+    // 使用新的合并函数，直接操作全局变量
+    if (paths_merge_to_global(new_paths, new_count))
+    {
+        printf("❌ FUNCTION paths_merge_to_global() error!\n");
+        free_paths(new_paths, new_count);
+        return -1;
+    }
+
+    // 释放临时路径（内容已经复制到全局变量）
+    free_paths(new_paths, new_count);
+
+    printf("▲▼▲FUNCTION2 DONE▲▼▲\n");
+
+    // 等待用户输入回车
+    wait_for_enter();
+    return 0;
 }
 
-// 使用示例
-int split_path_from_user()
+int split_path_from_user(char ***paths)
 {
     char input[2048];
-    char **paths = NULL;
-    int count = 0;
 
-    printf("\n▲▼▲FUNCTION2 START▲▼▲");
-    printf("\n▲▼▲请拖入文件,支持多个▲▼▲\n▶ ");
+    printf("▲▼▲请拖入文件,支持多个▲▼▲\n▶ ");
 
     while (1)
     {
@@ -35,25 +53,21 @@ int split_path_from_user()
         if (strcmp(input, "0") == 0)
             return 0;
 
-        count = split_paths(input, &paths);
+        // int count = split_paths(input, paths);
+        int count = split_paths_smart(input, paths);
 
-        if (count == -1)
+        if (count <= 0)
         {
-            printf("\n❌ 请拖入文件,输入0返回\n▶ ");
+            printf("\n❓ 请拖入文件或输入0返回\n▶ ");
             continue;
         }
 
-        break;
-    }
+        // printf("\n▲Found %d paths:\n", count);
+        // for (int i = 0; i < count; i++)
+        // {
+        //     printf("  %d: %s\n", i, (*paths)[i]);
+        // }
 
-    printf("\n▲Found %d paths:\n", count);
-    for (int i = 0; i < count; i++)
-    {
-        printf("%s\n", paths[i]);
+        return count;
     }
-
-    free_paths(paths, count);
-    printf("按回车键继续...");
-    getchar();
-    return 0;
 }

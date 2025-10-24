@@ -10,7 +10,8 @@
                 "-g",
                 "source/*.cpp",
                 "-o",
-                "output/main.exe"
+                "output/main.exe",
+                "-lshlwapi"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -33,7 +34,8 @@
                 "-O0",
                 "source/*.cpp",
                 "-o",
-                "output/debug/main.exe"
+                "output/debug/main.exe",
+                "-lshlwapi"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -56,7 +58,8 @@
                 "-s",
                 "source/*.cpp",
                 "-o",
-                "output/release/FTC.exe"
+                "output/release/FTC.exe",
+                "-lshlwapi"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

@@ -16,68 +16,82 @@
  * <tr><td>2025-10-22 <td>1.0     <td>Nywerya     <td>内容
  * </table>
  */
-int main(int argc, char **argv)
+// 全局变量定义
+char **g_global_paths = NULL;
+int g_global_path_count = 0;
+
+int main(int argc, char *argv[])
 {
+
+    setup_console_encoding();
+    // 初始化全局变量（如果有命令行参数）
+    if (argc > 1)
+    {
+        // 可以将命令行参数也合并到全局变量中
+        char **cmd_paths = &argv[1];
+        int cmd_count = argc - 1;
+        paths_merge_to_global(cmd_paths, cmd_count);
+    }
 
     char input[10];
     int choice;
 
-    // 设置控制台为 UTF-8 编码
-    system("chcp 65001 > nul");
-    SetConsoleOutputCP(65001);
-    // 在程序中添加检查
-    char cwd[1024];
-    _getcwd(cwd, sizeof(cwd));
-    printf("当前工作目录: %s\n", cwd);
-    // 检查 PATH 环境变量
-    // printf("PATH: %s\n", getenv("PATH"));
-    loading_animation1();
-
     while (1)
     {
-        printf("\n1. 文件格式转换\n");
-        printf("2. 输入文件路径\n");
-        printf("3. 待完善\n");
-        printf("0. 退出\n");
+        printf("\n1. 格 式 转 换 (当前有 %d 个文件)\n", g_global_path_count);
+        printf("2. 添 加 文 件\n");
+        printf("3. 显示路径列表\n");
+        printf("0. 退 出\n");
         printf("▶ ");
 
-        // 使用 fgets 读取整行输入
         if (fgets(input, sizeof(input), stdin) != NULL)
         {
-            // 尝试转换为数字
-            if (sscanf(input, "%d", &choice) == 1)
-            {
 
-                switch (choice)
-                {
-                case 1:
-                    function1(argc, argv);
-                    break;
-                case 2:
-                    function2();
-                    break;
-                case 3:
-                    function3();
-                    break;
-                case 0:
-                    printf("再见!\n");
-                    return 0;
-                default:
-                    printf("❌ 无效选择! 请输入 0-3 之间的数字\n");
-                }
-            }
-            else
+            // 先移除换行符
+            input[strcspn(input, "\n")] = 0;
+
+            // 清除缓存区
+            // clear_input_buffer();
+
+            if (!is_pure_digits(input))
+                goto end;
+
+            choice = atoi(input);
+
+            switch (choice)
             {
-                printf("❌ 输入错误，请输入数字！\n");
-                continue;
+            case 1:
+                // 使用全局变量调用 function1
+                function1(g_global_path_count, g_global_paths);
+                // 需要稍微修改 function1 来使用全局变量
+                break;
+            case 2:
+                if (function2()) // 现在不需要参数
+                {
+                    printf("❌ FUNCTION2 ERROR\n");
+                }
+                break;
+            case 3:
+                // 显示当前全局路径
+                printf("\n▲ 当前路径列表 (%d):\n", g_global_path_count);
+                for (int i = 0; i < g_global_path_count; i++)
+                {
+                    printf("  %d: %s\n", i, g_global_paths[i]);
+                    Sleep(60);
+                }
+                break;
+            case 0:
+                printf("SEEYOU NEXT TIME\n");
+                // 释放全局路径内存
+                if (g_global_paths)
+                {
+                    free_paths(g_global_paths, g_global_path_count);
+                }
+                return 0;
+            default:
+            end:
+                printf("❌ 无效选择! 请输入存在的数字选项\n");
             }
         }
     }
-}
-
-void function3() { printf("待完善\n"); }
-
-int test()
-{ // 设置控制台编码为 UTF-8
-    return 0;
 }

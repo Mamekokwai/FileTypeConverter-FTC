@@ -64,6 +64,25 @@
     "istream": "cpp",
     "string": "cpp",
     "random": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "algorithm": "cpp",
+    "format": "cpp",
+    "array": "cpp",
+    "concepts": "cpp",
+    "unordered_map": "cpp",
+    "memory": "cpp",
+    "optional": "cpp",
+    "string_view": "cpp",
+    "streambuf": "cpp",
+    "functional": "cpp",
+    "tuple": "cpp",
+    "variant": "cpp",
+    "numbers": "cpp",
+    "deque": "cpp",
+    "vector": "cpp",
+    "initializer_list": "cpp",
+    "ranges": "cpp",
+    "span": "cpp",
+    "text_encoding": "cpp"
   }
 }
