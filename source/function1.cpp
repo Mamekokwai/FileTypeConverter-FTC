@@ -79,6 +79,7 @@ int file_type_change(int path_count, char *path_str[], char *newtype)
             // printf("---\n");
 
             // 执行转换
+            printf("使用GCK编码指令...");
             int result1 = ffmpeg_convert(path_str[i], output_path_ptr[i]);
             // printf("%s\n", path_str[i]);
 

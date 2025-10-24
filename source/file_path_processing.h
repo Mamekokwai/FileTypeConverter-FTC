@@ -111,6 +111,14 @@ void combine_paths_count(FileInfo *file_info, char **output_path_ptr, const char
  */
 char *LocalToUTF8(const char *local_str);
 
+/**
+ * @brief 将 UTF-8 编码转换为本地编码（用于调试输出）
+ * @param  utf8_str          UTF-8编码字符串
+ * @return char*
+ * @date 2025-10-24
+ */
+char *UTF8ToLocal(const char *utf8_str);
+
 // /**
 //  * @brief 分割输入的路径字符串为多个路径字符串
 //  * @param  input              输入的路径字符串
