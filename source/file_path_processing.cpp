@@ -194,7 +194,7 @@ int split_paths_smart(const char *input, char ***paths)
                     temp_path[path_len] = '\0';
 
                     // 🎯 检查文件是否存在
-                    if (path_exists_ex(temp_path, 1)) // 1 表示仅检查文件
+                    if (path_exists_ex((temp_path), 1)) // 1 表示仅检查文件
                     {
                         // 扩展数组如果需要
                         if (count >= capacity)
@@ -227,7 +227,7 @@ int split_paths_smart(const char *input, char ***paths)
                 temp_path[path_len] = '\0';
 
                 // 🎯 检查文件是否存在
-                if (path_exists_ex(temp_path, 1)) // 1 表示仅检查文件
+                if (path_exists_ex((temp_path), 1)) // 1 表示仅检查文件
                 {
                     // 扩展数组如果需要
                     if (count >= capacity)
@@ -262,7 +262,7 @@ int split_paths_smart(const char *input, char ***paths)
             temp_path[path_len] = '\0';
 
             // 🎯 检查文件是否存在
-            if (path_exists_ex(temp_path, 1)) // 1 表示仅检查文件
+            if (path_exists_ex((temp_path), 1)) // 1 表示仅检查文件
             {
                 // 扩展数组如果需要
                 if (count >= capacity)
@@ -566,7 +566,7 @@ int path_exists_ex(const char *path, int check_type)
     }
 
     // 首先检查路径是否存在
-    if (!PathFileExistsA(path))
+    if (!PathFileExistsA(UTF8ToLocal(path)))
     {
         printf("❌ 路径不存在: %s\n", path);
         return 0;
@@ -580,7 +580,7 @@ int path_exists_ex(const char *path, int check_type)
         return 1;
 
     case 1: // 仅文件
-        if (PathIsDirectoryA(path))
+        if (PathIsDirectoryA(LocalToUTF8(path)))
         {
             printf("❌ 这是目录，不是文件: %s\n", path);
             return 0;
@@ -589,7 +589,7 @@ int path_exists_ex(const char *path, int check_type)
         return 1;
 
     case 2: // 仅目录
-        if (!PathIsDirectoryA(path))
+        if (!PathIsDirectoryA(LocalToUTF8(path)))
         {
             printf("❌ 这是文件，不是目录: %s\n", path);
             return 0;

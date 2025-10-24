@@ -35,12 +35,15 @@ int main(int argc, char *argv[])
 
     char input[10];
     int choice;
+    const char *path = "E:\\Personalfile\\Art\\paint\\2025\\10-21shell_ico_make\\FileTypeConverter-FTC\\resources\\和服花妈.jpg";
+    char *test_path;
 
     while (1)
     {
         printf("\n1. 格 式 转 换 (当前有 %d 个文件)\n", g_global_path_count);
         printf("2. 添 加 文 件\n");
         printf("3. 显示路径列表\n");
+        printf("4. 测 试\n");
         printf("0. 退 出\n");
         printf("▶ ");
 
@@ -80,6 +83,19 @@ int main(int argc, char *argv[])
                     Sleep(60);
                 }
                 break;
+            case 4:
+                test_path = UTF8ToLocal(path);
+
+                if (!PathFileExistsA(test_path))
+                {
+                    printf("❌ 路径不存在: %s\n", test_path);
+                }
+                else
+                {
+                    printf("✅ 路径存在: %s\n", test_path);
+                }
+                break;
+
             case 0:
                 printf("SEEYOU NEXT TIME\n");
                 // 释放全局路径内存
