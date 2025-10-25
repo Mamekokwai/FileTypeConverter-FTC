@@ -2,6 +2,25 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "windres-compile",
+            "type": "shell",
+            "command": "windres",
+            "args": [
+                "Source/resources.rc",
+                "-o",
+                "Source/resources.o"
+            ],
+            "group": "build",
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false
+            }
+        },
+        {
             "type": "cppbuild",
             "label": "编译所有源文件",
             "command": "C:/msys64/ucrt64/bin/gcc.exe",
@@ -9,6 +28,7 @@
                 "-fdiagnostics-color=always",
                 "-g",
                 "source/*.cpp",
+                "Source/resources.o",
                 "-o",
                 "output/main.exe",
                 "-lshlwapi"
@@ -22,7 +42,9 @@
             "group": {
                 "kind": "build",
                 "isDefault": true
-            }
+            },
+            //编译依赖项,资源文件先编译
+            "dependsOn": "windres-compile"
         },
         {
             "type": "cppbuild",
@@ -33,6 +55,7 @@
                 "-g",
                 "-O0",
                 "source/*.cpp",
+                "Source/resources.o",
                 "-o",
                 "output/debug/main.exe",
                 "-lshlwapi"
@@ -46,7 +69,9 @@
             "group": {
                 "kind": "build",
                 "isDefault": false
-            }
+            },
+            //编译依赖项,资源文件先编译
+            "dependsOn": "windres-compile"
         },
         {
             "type": "cppbuild",
@@ -57,6 +82,7 @@
                 "-O2",
                 "-s",
                 "source/*.cpp",
+                "Source/resources.o",
                 "-o",
                 "output/release/FTC.exe",
                 "-lshlwapi"
@@ -70,7 +96,9 @@
             "group": {
                 "kind": "build",
                 "isDefault": false
-            }
+            },
+            //编译依赖项,资源文件先编译
+            "dependsOn": "windres-compile"
         }
     ]
 }
