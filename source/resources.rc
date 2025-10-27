@@ -1,2 +1,2 @@
 #include "windows.h"
-IDI_MAIN ICON "Resources\\ICON\\FTC_ICO_V1.2.ico"
+IDI_MAIN ICON "Assets\\ICON\\FTC_ICO_V1.2.ico"
