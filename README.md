@@ -124,6 +124,7 @@ FTC/
     └── Picture/             # 图片资源
 ```
 
+
 ## 🔧 编译说明
 
 ### 使用 VSCode 编译 (推荐)
@@ -135,19 +136,37 @@ FTC/
    - 修改 `launch.json` 中的 GDB 路径
 4. **开始调试**：选择菜单栏「调试」→「开始调试」
 
-![VSCode配置](Docs/Picture/配置项目.png)
+![VSCode配置](Content/picture/vscode配置&运行示范.png)
 
 ### 手动编译命令
 
 **调试版本**：
 ```bash
-gcc -g -o ./output/debug/main.exe ./source/*.cpp
+windres Source/resources.rc -o Source/resources.o 
+
+gcc -fdiagnostics-color=always -g -O0 source/*.cpp Source/resources.o -o Build/debug/main.exe -lshlwapi
 ```
 
 **发布版本**：
 ```bash
-gcc -O2 -s -o ./release/main.exe ./source/*.cpp
+windres Source/resources.rc -o Source/resources.o 
+
+gcc -fdiagnostics-color=always -s -O2 source/*.cpp Source/resources.o -o Build/release/FTC.exe -lshlwapi
 ```
+
+
+### 库文件配置
+#### 包含的MYSY2静态库
+- ffmpeg 相关静态库文件需自行下载并放置在编译器库目录下
+
+#### 下载方法：
+- 通过MYSY2 UCRT64管理包:
+  - 运行MYSY2 UCRT64 
+  - pacman -Syu  #更新所有包
+  - pacman -S mingw-w64-ucrt-x86_64-ffmpeg  #下载ffmpeg库
+
+  - pacman -Q | grep ffmpeg  #检查安装的包
+
 
 ## 📚 核心 API
 
