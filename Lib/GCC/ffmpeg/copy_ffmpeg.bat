@@ -1,41 +1,49 @@
 @echo off
-echo å¤åˆ¶ FFmpeg åº“æ–‡ä»¶åˆ°é¡¹ç›®...
+echo ¸´ÖÆ FFmpeg ¿âÎÄ¼þµ½ÏîÄ¿...
 
-REM èŽ·å– bat æ–‡ä»¶æ‰€åœ¨ç›®å½•
 set "BAT_DIR=%~dp0"
-echo BAT æ–‡ä»¶ç›®å½•: %BAT_DIR%
+echo BAT ÎÄ¼þÄ¿Â¼: %BAT_DIR%
 
-@REM REM å¯åŠ¨ MSYS2 UCRT64 å¹¶æ‰§è¡Œå¤åˆ¶å‘½ä»¤
-@REM C:\msys64\ucrt64.exe -c "
-@REM PROJECT_PATH='/d/PersonalFile/Art/paint/2025/10-21shell_ico_make/FileTypeConverter-FTC'
+REM ´´½¨Ä¿Â¼
+mkdir "%BAT_DIR%include" 2>nul
+mkdir "%BAT_DIR%lib" 2>nul
 
-@REM echo 'å¤åˆ¶ FFmpeg åº“æ–‡ä»¶åˆ°é¡¹ç›®...'
-@REM echo 'ç›®æ ‡è·¯å¾„: '\\\"\\\$PROJECT_PATH\\\"'
+echo.
+echo ²½Öè1: ¸´ÖÆÍ·ÎÄ¼þ...
 
-@REM mkdir -p \\\"\\\$PROJECT_PATH/lib/ffmpeg/include\\\"
-@REM mkdir -p \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib\\\"
+REM Öð¸ö¸´ÖÆ FFmpeg ¿âµÄÍ·ÎÄ¼þÄ¿Â¼
+xcopy "C:\msys64\ucrt64\include\libavcodec" "%BAT_DIR%include\libavcodec\" /E /I /Y
+xcopy "C:\msys64\ucrt64\include\libavformat" "%BAT_DIR%include\libavformat\" /E /I /Y
+xcopy "C:\msys64\ucrt64\include\libavutil" "%BAT_DIR%include\libavutil\" /E /I /Y
+xcopy "C:\msys64\ucrt64\include\libavfilter" "%BAT_DIR%include\libavfilter\" /E /I /Y
+xcopy "C:\msys64\ucrt64\include\libavdevice" "%BAT_DIR%include\libavdevice\" /E /I /Y
+xcopy "C:\msys64\ucrt64\include\libswscale" "%BAT_DIR%include\libswscale\" /E /I /Y
+xcopy "C:\msys64\ucrt64\include\libswresample" "%BAT_DIR%include\libswresample\" /E /I /Y
 
-@REM echo 'å¤åˆ¶å¤´æ–‡ä»¶...'
-@REM cp -r /ucrt64/include/libav* \\\"\\\$PROJECT_PATH/lib/ffmpeg/include/\\\"
-@REM cp -r /ucrt64/include/libsw* \\\"\\\$PROJECT_PATH/lib/ffmpeg/include/\\\"
+echo.
+echo ²½Öè2: ¸´ÖÆ¾²Ì¬¿â...
+xcopy "C:\msys64\ucrt64\lib\libav*.a" "%BAT_DIR%lib\" /Y
+xcopy "C:\msys64\ucrt64\lib\libsw*.a" "%BAT_DIR%lib\" /Y
 
-@REM echo 'å¤åˆ¶é™æ€åº“...'
-@REM cp /ucrt64/lib/libavcodec.a \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\"
-@REM cp /ucrt64/lib/libavformat.a \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\"
-@REM cp /ucrt64/lib/libavutil.a \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\"
-@REM cp /ucrt64/lib/libswscale.a \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\"
-@REM cp /ucrt64/lib/libavfilter.a \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\"
-@REM cp /ucrt64/lib/libswresample.a \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\"
+echo.
+echo ¡ø ¸´ÖÆÍê³É£¡
+echo ¡ø Í·ÎÄ¼þÎ»ÖÃ: %BAT_DIR%include\
+echo ¡ø ¿âÎÄ¼þÎ»ÖÃ: %BAT_DIR%lib\
 
-@REM echo 'âœ… å¤åˆ¶å®Œæˆï¼'
-@REM echo 'ðŸ“ å¤´æ–‡ä»¶ä½ç½®: '\\\"\\\$PROJECT_PATH/lib/ffmpeg/include/\\\"'
-@REM echo 'ðŸ“ åº“æ–‡ä»¶ä½ç½®: '\\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\"'
+echo.
+echo ÑéÖ¤¸´ÖÆ½á¹û:
+dir "%BAT_DIR%include\libavcodec\*.h" /B 2>nul >nul && (
+    echo ¡ø Í·ÎÄ¼þ¸´ÖÆ³É¹¦
+) || (
+    echo ¨‹ Í·ÎÄ¼þ¸´ÖÆÊ§°Ü
+)
 
-@REM echo 'éªŒè¯å¤åˆ¶ç»“æžœ:'
-@REM ls \\\"\\\$PROJECT_PATH/lib/ffmpeg/include/\\\" | head -5
-@REM ls \\\"\\\$PROJECT_PATH/lib/ffmpeg/lib/\\\" | head -5
-@REM "
+dir "%BAT_DIR%lib\*.a" /B 2>nul >nul && (
+    echo ¡ø ¿âÎÄ¼þ¸´ÖÆ³É¹¦
+) || (
+    echo ¨‹ ¿âÎÄ¼þ¸´ÖÆÊ§°Ü
+)
 
-@REM echo.
-@REM echo æŒ‰ä»»æ„é”®é€€å‡º...
-@REM pause > nul
+echo.
+echo °´ÈÎÒâ¼üÍË³ö...
+pause > nul
