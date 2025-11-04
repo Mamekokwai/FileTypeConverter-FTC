@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "调试 main.exe",
+      "name": "编译调试版本",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/Build/debug/main.exe",
@@ -35,7 +35,7 @@
       }
     },
     {
-      "name": "编译输出",
+      "name": "编译源文件",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/Build/main.exe",
@@ -53,13 +53,13 @@
           "ignoreFailures": true
         }
       ],
-      "preLaunchTask": "编译所有源文件",
+      "preLaunchTask": "编译源文件",
       "logging": {
         "moduleLoad": false
       }
     },
     {
-      "name": "发布版本运行",
+      "name": "编译发布版本",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/Build/release/FTC.exe",

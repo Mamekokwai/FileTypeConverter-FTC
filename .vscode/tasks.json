@@ -22,7 +22,7 @@
         },
         {
             "type": "cppbuild",
-            "label": "编译所有源文件",
+            "label": "编译源文件",
             "command": "C:/msys64/ucrt64/bin/gcc.exe",
             "args": [
                 "-fdiagnostics-color=always",

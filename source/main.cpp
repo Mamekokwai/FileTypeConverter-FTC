@@ -7,6 +7,7 @@
  * @version 1.0
  * @date 2025-10-22
  * @license MIT license
+ * @note 程序使用的的是UTF-8编码,windows控制台使用GBK编码
  *
  * @copyright Copyright (c) 2025  nywerya
  *
@@ -25,6 +26,14 @@ int main(int argc, char *argv[])
 
     setup_console_encoding();
     // 初始化全局变量（如果有命令行参数）
+
+    // 检查 FFmpeg
+    if (!check_ffmpeg_available())
+    {
+        wait_for_enter();
+        return -1;
+    }
+
     if (argc > 1)
     {
         // 可以将命令行参数也合并到全局变量中
@@ -84,16 +93,17 @@ int main(int argc, char *argv[])
                 }
                 break;
             case 4:
-                test_path = UTF8ToLocal(path);
+                // test_path = UTF8ToLocal(path);
 
-                if (!PathFileExistsA(test_path))
-                {
-                    printf("❌ 路径不存在: %s\n", test_path);
-                }
-                else
-                {
-                    printf("✅ 路径存在: %s\n", test_path);
-                }
+                // if (!PathFileExistsA(test_path))
+                // {
+                //     printf("❌ 路径不存在: %s\n", test_path);
+                // }
+                // else
+                // {
+                //     printf("✅ 路径存在: %s\n", test_path);
+                // }
+                printf("✅ 路径存在: %s\n", get_ffmpeg_path());
                 break;
 
             case 0:

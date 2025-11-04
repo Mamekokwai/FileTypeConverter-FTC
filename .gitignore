@@ -9,7 +9,7 @@ Assets/ICON/FTC_ICO_V1.0.png
 Assets/ICON/FTC_ICO_V1.0.svg
 Assets/ICON/FTC_ICO_V1.1.ico
 Assets/ICON/FTC_ICO_V1.1.png
-Assets/ICON/FTC_ICO_V1.2.ico
+Assets/ICON/FTC_ICO_V1.2.png
 Assets/Test/Picture/Input/a.ai
 
 #忽略测试输出
@@ -17,7 +17,8 @@ Assets/Test/Picture/Output/
 
 # 忽略构建文件
 Build/*.exe
-*.o
+Build/*.o
+Build/debug/*
 
 # 忽略静态库文件
 ## include
@@ -47,3 +48,4 @@ Lib/GCC/ffmpeg/lib/libswresample.dll.a
 Lib/GCC/ffmpeg/lib/libswscale.a
 Lib/GCC/ffmpeg/lib/libswscale.dll.a
 
+temp/
