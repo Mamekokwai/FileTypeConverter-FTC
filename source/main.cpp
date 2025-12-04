@@ -44,7 +44,8 @@ int main(int argc, char *argv[])
 
     char input[10];
     int choice;
-    const char *path = "E:\\Personalfile\\Art\\paint\\2025\\10-21shell_ico_make\\FileTypeConverter-FTC\\resources\\和服花妈.jpg";
+    char path1[MAX_PATH] = {0};
+    // const char *path = "E:\\Personalfile\\Art\\paint\\2025\\10-21shell_ico_make\\FileTypeConverter-FTC\\resources\\和服花妈.jpg";
     char *test_path;
 
     while (1)
@@ -93,6 +94,8 @@ int main(int argc, char *argv[])
                 }
                 break;
             case 4:
+                GetModuleFileNameA(NULL, path1, MAX_PATH);
+                printf("当前程序路径: %s\n", path1);
                 // test_path = UTF8ToLocal(path);
 
                 // if (!PathFileExistsA(test_path))

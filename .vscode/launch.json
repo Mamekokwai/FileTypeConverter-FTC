@@ -1,11 +1,24 @@
 {
   "version": "0.2.0",
   "configurations": [
+    // {
+    //   "name": "运行获取构建工具的批处理脚本",
+    //   "type": "node",
+    //   "request": "launch",
+    //   "runtimeExecutable": "cmd.exe",
+    //   "runtimeArgs": [
+    //     "/c",
+    //     "${workspaceFolder}/Get_tools_to_buildup.bat"
+    //   ],
+    //   "cwd": "${workspaceFolder}",
+    //   "console": "integratedTerminal",
+    //   "internalConsoleOptions": "neverOpen"
+    // },
     {
       "name": "编译调试版本",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/Build/debug/main.exe",
+      "program": "${workspaceFolder}/Build/debug/FTC.exe",
       "args": [
         "Assets\\Test\\Picture\\Input\\1.png",
         "Assets\\Test\\Picture\\Input\\2.png",
@@ -38,7 +51,7 @@
       "name": "编译源文件",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/Build/main.exe",
+      "program": "${workspaceFolder}/Build/Test/FTC.exe",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

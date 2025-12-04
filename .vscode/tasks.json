@@ -1,6 +1,30 @@
 {
     "version": "2.0.0",
     "tasks": [
+        // {
+        //     "label": "Get_tools_to_buildup.bat",
+        //     "type": "process",
+        //     "command": "${workspaceFolder}/Get_tools_to_buildup.bat",
+        //     "args": [],
+        //     "options": {
+        //         "cwd": "${workspaceFolder}"
+        //     },
+        //     "problemMatcher": [],
+        //     "group": {
+        //         "kind": "build",
+        //         "isDefault": false
+        //     },
+        //     // 是否执行命令回显
+        //     // "presentation": {
+        //     //     "echo": true,
+        //     //     "reveal": "always",
+        //     //     "focus": false,
+        //     //     "panel": "shared",
+        //     //     "showReuseMessage": true,
+        //     //     "clear": false
+        //     // },
+        //     "detail": "运行获取构建工具的批处理脚本"
+        // },
         {
             "label": "windres-compile",
             "type": "shell",
@@ -30,7 +54,7 @@
                 "source/*.cpp",
                 "Source/resources.o",
                 "-o",
-                "Build/main.exe",
+                "Build/Test/FTC.exe",
                 "-lshlwapi", //-lws2_32
                 //链接ffmpeg静态库
                 "-I",
@@ -82,7 +106,7 @@
                 "source/*.cpp",
                 "Source/resources.o",
                 "-o",
-                "Build/debug/main.exe",
+                "Build/debug/FTC.exe",
                 "-lshlwapi",
                 //链接ffmpeg静态库
                 "-I",
