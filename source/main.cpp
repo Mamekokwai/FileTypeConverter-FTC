@@ -96,6 +96,7 @@ int main(int argc, char *argv[])
             case 4:
                 GetModuleFileNameA(NULL, path1, MAX_PATH);
                 printf("当前程序路径: %s\n", path1);
+                printf(".\\tools\\ffmpeg\\ffmpeg.exe -i \"%s\" \"%s\" -y -hide_banner -loglevel error", "A", "B");
                 // test_path = UTF8ToLocal(path);
 
                 // if (!PathFileExistsA(test_path))

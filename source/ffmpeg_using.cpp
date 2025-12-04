@@ -5,7 +5,7 @@ int ffmpeg_convert(const char *input, const char *output)
     char command[512];
 
     // 构建UTF-8命令
-    snprintf(command, sizeof(command), "ffmpeg -i \"%s\" \"%s\" -y -hide_banner -loglevel error", input, output);
+    snprintf(command, sizeof(command), ".\\tools\\ffmpeg\\ffmpeg.exe -i \"%s\" \"%s\" -y -hide_banner -loglevel error", input, output);
     // printf("🔧 UTF-8命令: %s\n", command);
 
     // 将UTF-8命令转换为本地编码（GBK）

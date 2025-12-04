@@ -30,7 +30,7 @@
         "Assets\\Test\\Picture\\Input\\中文测试_可爱花妈.jpg",
       ],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/Build/debug",
       "environment": [],
       "externalConsole": true,
       "MIMode": "gdb",
@@ -48,13 +48,13 @@
       }
     },
     {
-      "name": "编译源文件",
+      "name": "编译测试版本",
       "type": "cppdbg",
       "request": "launch",
       "program": "${workspaceFolder}/Build/Test/FTC.exe",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/Build/Test",
       "environment": [],
       "externalConsole": true,
       "MIMode": "gdb",
@@ -66,7 +66,7 @@
           "ignoreFailures": true
         }
       ],
-      "preLaunchTask": "编译源文件",
+      "preLaunchTask": "编译测试版本",
       "logging": {
         "moduleLoad": false
       }
@@ -78,7 +78,7 @@
       "program": "${workspaceFolder}/Build/release/FTC.exe",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/Build/release",
       "environment": [],
       "externalConsole": true,
       "MIMode": "gdb",
