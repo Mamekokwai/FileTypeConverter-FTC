@@ -94,6 +94,7 @@ int main(int argc, char *argv[])
                     printf("  %d: %s\n", i, g_global_paths[i]);
                     Sleep(60);
                 }
+
                 break;
             case 4:
                 GetModuleFileNameA(NULL, path1, MAX_PATH);
@@ -110,6 +111,7 @@ int main(int argc, char *argv[])
                 //     printf("✅ 路径存在: %s\n", test_path);
                 // }
                 printf("✅ 路径存在: %s\n", get_ffmpeg_path());
+
                 break;
             case 5:
                 function3(g_global_path_count, g_global_paths);

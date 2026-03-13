@@ -80,7 +80,8 @@
                 "-luser32",
                 "-lbcrypt",
                 "-static",
-                "-lpthread"
+                "-lpthread",
+                "-liconv"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -132,7 +133,8 @@
                 "-luser32",
                 "-lbcrypt",
                 "-static",
-                "-lpthread"
+                "-lpthread",
+                "-liconv"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -184,7 +186,8 @@
                 "-luser32",
                 "-lbcrypt",
                 "-static",
-                "-lpthread"
+                "-lpthread",
+                "-liconv"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

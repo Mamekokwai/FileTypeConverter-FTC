@@ -12,6 +12,7 @@
             "compilerArgs": [
                 ""
             ]
+            // "cwd": "${workspaceFolder}"
         }
     ],
     "version": 4
