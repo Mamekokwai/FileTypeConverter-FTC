@@ -20,6 +20,7 @@
 // 全局变量定义
 char **g_global_paths = NULL;
 int g_global_path_count = 0;
+int compression_ratio = 80;
 
 int main(int argc, char *argv[])
 {
@@ -54,6 +55,7 @@ int main(int argc, char *argv[])
         printf("2. 添 加 文 件\n");
         printf("3. 显示路径列表\n");
         printf("4. 测 试\n");
+        printf("5. 图片压缩为jpg\n");
         printf("0. 退 出\n");
         printf("▶ ");
 
@@ -108,6 +110,11 @@ int main(int argc, char *argv[])
                 //     printf("✅ 路径存在: %s\n", test_path);
                 // }
                 printf("✅ 路径存在: %s\n", get_ffmpeg_path());
+                break;
+            case 5:
+                function3(g_global_path_count, g_global_paths);
+                // 清空输入缓冲区
+                clear_input_buffer();
                 break;
 
             case 0:

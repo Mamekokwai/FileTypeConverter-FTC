@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <windows.h>
+#include "common.h"
 
 int function1(int argc, char *argv[]);
 

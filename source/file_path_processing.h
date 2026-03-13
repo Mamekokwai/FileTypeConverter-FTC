@@ -5,6 +5,7 @@
 #include <windows.h>
 #include <string.h>
 #include <shlwapi.h>
+#include "common.h"
 #pragma comment(lib, "shlwapi.lib")
 
 // 编码配置宏
@@ -146,13 +147,6 @@ int split_paths_smart(const char *input, char ***paths);
  * @date 2025-10-24
  */
 void free_paths(char **paths, int count);
-
-/**
- * @brief 清空输入缓冲区
- * @return int
- * @date 2025-10-24
- */
-int clear_input_buffer();
 
 /**
  * @brief 合并路径数组到全局变量

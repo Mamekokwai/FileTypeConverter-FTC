@@ -331,16 +331,7 @@ void free_paths(char **paths, int count)
     free(paths);
 }
 
-int clear_input_buffer()
-{
-    int c;
-    int count = 0;
-    while ((c = getchar()) != '\n' && c != EOF)
-    {
-        count++;
-    }
-    return count;
-}
+
 
 //=========================================================================//
 
