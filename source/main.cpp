@@ -1,26 +1,27 @@
-#include "main.h"
-
 /**
  * @file main.cpp
- * @brief  主程序入口
- * @author Nywerya (nywerya@gmail.com)
+ * @brief 主程序
+ * @author nywerya (nywerya@gmail.com)
  * @version 1.0
- * @date 2025-10-22
- * @license MIT license
- * @note 程序使用的的是UTF-8编码,windows控制台使用GBK编码
- *
- * @copyright Copyright (c) 2025  nywerya
- *
- * @par 修改日志:
- * <table>
- * <tr><th>Date       <th>Version <th>Author  <th>Description
- * <tr><td>2025-10-22 <td>1.0     <td>Nywerya     <td>内容
- * </table>
+ * @date 2026-03-26
  */
+#include "main.h"
+
 // 全局变量定义
 char **g_global_paths = NULL;
 int g_global_path_count = 0;
 int compression_ratio = 80;
+
+menu_choice menu_choices[] = {
+    {FILE_TYPE_CHANGING, "格式转换"},
+    {DELETE_FILE_PATH, "删除所有文件路径"},
+    {ADDING_FILE_PATH, "添加文件"},
+    {COMPRESSION_TO_JPG, "图片压缩为jpg"},
+    {TEST, "测试"},
+    {SHOW_PATH_LIST, "显示路径列表"},
+    {EXIT, "退出"},
+    {COPY_AND_RENAME_BY_PARENT_PATH, "根据父路径复制并重命名"},
+};
 
 int main(int argc, char *argv[])
 {
@@ -51,13 +52,34 @@ int main(int argc, char *argv[])
 
     while (1)
     {
-        printf("\n1. 格 式 转 换 (当前有 %d 个文件)\n", g_global_path_count);
-        printf("2. 添 加 文 件\n");
-        printf("3. 显示路径列表\n");
-        printf("4. 测 试\n");
-        printf("5. 图片压缩为jpg\n");
-        printf("0. 退 出\n");
+        // printf("\n1. 格 式 转 换 (当前有 %d 个文件)\n", g_global_path_count);
+        // printf("2. 添 加 文 件\n");
+        // printf("3. 显示路径列表\n");
+        // printf("4. 测 试\n");
+        // printf("5. 图片压缩为jpg\n");
+        // printf("0. 退 出\n");
+        // 对结构体数组按 choice 字段进行排序
+        int menu_count = sizeof(menu_choices) / sizeof(menu_choice);
+        for (int i = 0; i < menu_count - 1; i++)
+        {
+            for (int j = 0; j < menu_count - i - 1; j++)
+            {
+                if (menu_choices[j].choice > menu_choices[j + 1].choice)
+                {
+                    menu_choice temp = menu_choices[j];
+                    menu_choices[j] = menu_choices[j + 1];
+                    menu_choices[j + 1] = temp;
+                }
+            }
+        }
         printf("▶ ");
+
+        // 按大小排序输出菜单
+        printf("\n");
+        for (int i = 0; i < menu_count; i++)
+        {
+            printf("%d. %s\n", menu_choices[i].choice, menu_choices[i].description);
+        }
 
         if (fgets(input, sizeof(input), stdin) != NULL)
         {
@@ -72,21 +94,53 @@ int main(int argc, char *argv[])
                 goto end;
 
             choice = atoi(input);
-
+            /***************************************************************************************/
             switch (choice)
             {
-            case 1:
+            case COPY_AND_RENAME_BY_PARENT_PATH:
+                function6();
+                break;
+            case FILE_TYPE_CHANGING:
                 // 使用全局变量调用 function1
                 function1(g_global_path_count, g_global_paths);
                 // 需要稍微修改 function1 来使用全局变量
                 break;
-            case 2:
+
+            case ADDING_FILE_PATH:
                 if (function2()) // 现在不需要参数
                 {
                     printf("❌ FUNCTION2 ERROR\n");
                 }
                 break;
-            case 3:
+
+            case DELETE_FILE_PATH:
+                // 释放全局路径内存
+                if (g_global_paths)
+                {
+                    free_paths(g_global_paths, g_global_path_count);
+                    g_global_paths = NULL;
+                    g_global_path_count = 0;
+                    printf("✅ 已删除所有文件路径\n");
+                }
+                else
+                {
+                    printf("⚠️ 没有文件路径可删除\n");
+                }
+                break;
+            case COMPRESSION_TO_JPG:
+                function3(g_global_path_count, g_global_paths);
+                // 清空输入缓冲区
+                clear_input_buffer();
+                break;
+
+            case TEST:
+                GetModuleFileNameA(NULL, path1, MAX_PATH);
+                printf("当前程序路径: %s\n", path1);
+                printf(".\\tools\\ffmpeg\\ffmpeg.exe -i \"%s\" \"%s\" -y -hide_banner -loglevel error\n", "A", "B");
+                printf("✅ 路径存在: %s\n", get_ffmpeg_path());
+                break;
+
+            case SHOW_PATH_LIST:
                 // 显示当前全局路径
                 printf("\n▲ 当前路径列表 (%d):\n", g_global_path_count);
                 for (int i = 0; i < g_global_path_count; i++)
@@ -94,32 +148,9 @@ int main(int argc, char *argv[])
                     printf("  %d: %s\n", i, g_global_paths[i]);
                     Sleep(60);
                 }
-
-                break;
-            case 4:
-                GetModuleFileNameA(NULL, path1, MAX_PATH);
-                printf("当前程序路径: %s\n", path1);
-                printf(".\\tools\\ffmpeg\\ffmpeg.exe -i \"%s\" \"%s\" -y -hide_banner -loglevel error", "A", "B");
-                // test_path = UTF8ToLocal(path);
-
-                // if (!PathFileExistsA(test_path))
-                // {
-                //     printf("❌ 路径不存在: %s\n", test_path);
-                // }
-                // else
-                // {
-                //     printf("✅ 路径存在: %s\n", test_path);
-                // }
-                printf("✅ 路径存在: %s\n", get_ffmpeg_path());
-
-                break;
-            case 5:
-                function3(g_global_path_count, g_global_paths);
-                // 清空输入缓冲区
-                clear_input_buffer();
                 break;
 
-            case 0:
+            case EXIT:
                 printf("SEEYOU NEXT TIME\n");
                 // 释放全局路径内存
                 if (g_global_paths)
@@ -127,9 +158,11 @@ int main(int argc, char *argv[])
                     free_paths(g_global_paths, g_global_path_count);
                 }
                 return 0;
+
             default:
             end:
                 printf("❌ 无效选择! 请输入存在的数字选项\n");
+                break;
             }
         }
     }

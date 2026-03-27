@@ -1,3 +1,10 @@
+/**
+ * @file function2.cpp
+ * @brief 功能2：添加文件路径
+ * @author nywerya (nywerya@gmail.com)
+ * @version 1.0
+ * @date 2026-03-26
+ */
 #include "function2.h"
 #include "main.h"
 

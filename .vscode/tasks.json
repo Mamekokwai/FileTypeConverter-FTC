@@ -56,6 +56,9 @@
                 "-o",
                 "Build/Test/FTC.exe",
                 "-lshlwapi", //-lws2_32
+                //新增source/lib文件夹存放头文件
+                "-I",
+                "Source/lib",
                 //链接ffmpeg静态库
                 "-I",
                 "Lib/GCC/ffmpeg/include",
@@ -109,6 +112,9 @@
                 "-o",
                 "Build/debug/FTC.exe",
                 "-lshlwapi",
+                //新增source/lib文件夹存放头文件
+                "-I",
+                "Source/lib",
                 //链接ffmpeg静态库
                 "-I",
                 "Lib/GCC/ffmpeg/include",
@@ -162,6 +168,9 @@
                 "-o",
                 "Build/release/FTC.exe",
                 "-lshlwapi",
+                //新增source/lib文件夹存放头文件
+                "-I",
+                "Source/lib",
                 //链接ffmpeg静态库
                 "-I",
                 "Lib/GCC/ffmpeg/include",

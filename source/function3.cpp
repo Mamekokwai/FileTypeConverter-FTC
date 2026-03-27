@@ -1,3 +1,10 @@
+/**
+ * @file function3.cpp
+ * @brief 功能3：图片压缩
+ * @author nywerya (nywerya@gmail.com)
+ * @version 1.0
+ * @date 2026-03-26
+ */
 #include "function3.h"
 #include "main.h"
 

@@ -1,3 +1,10 @@
+/**
+ * @file function1.cpp
+ * @brief 功能1：文件格式转换
+ * @author nywerya (nywerya@gmail.com)
+ * @version 1.0
+ * @date 2026-03-26
+ */
 #include "function1.h"
 
 int function1(int path_count, char *path_str[])

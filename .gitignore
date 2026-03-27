@@ -12,10 +12,14 @@ Assets/ICON/FTC_ICO_V1.1.png
 Assets/ICON/FTC_ICO_V1.2.png
 Assets/Test/Picture/Input/a.ai
 
+#忽略测试输入
+Assets/Test
+
 #忽略测试输出
 Assets/Test/Picture/Output/
 
 # 忽略构建文件
+Build/
 Build/*.exe
 Build/*.o
 Build/debug/*
